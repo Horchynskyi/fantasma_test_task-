@@ -6,18 +6,9 @@ export class GameStateSpinStop extends GameState {
 		const { world, ui, stateMachine, lastSpinResult } = this.parent;
 
 		world.once(WorldEventsE.ALL_REELS_SPIN_STOP_COMPLETED, () => {
-			if (lastSpinResult.win) {
-				world.playWin(lastSpinResult.winMatrix);
-
-				this.parent.balance += lastSpinResult.win;
-
-				ui.winPopup.setWin(lastSpinResult.win);
-				ui.winPopup.playShow();
-
-				ui.updateBalance(this.parent.balance);
-			}
-
-			stateMachine.setState(GameStateE.IDLE);
+			stateMachine.setState(
+				lastSpinResult.win ? GameStateE.SHOW_WIN : GameStateE.IDLE
+			);
 		});
 
 		if (ui.spinButton.enabled) {

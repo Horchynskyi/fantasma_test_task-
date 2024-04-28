@@ -3,7 +3,7 @@ import { resourcesPathes } from './resources';
 import { World } from './world/World';
 import { UI } from './ui/UI';
 import { ResizeManager } from './ResizeManager';
-import { GameStateE, WorldEventsE } from './enums';
+import { GameStateE } from './enums';
 import { StateMachine } from './common/state/StateMachine';
 import { GameStateIdle } from './game_states/GameStateIdle';
 import { GameStateSpinStart } from './game_states/GameStateSpinStart';
@@ -12,6 +12,7 @@ import { GameStateSpinStop } from './game_states/GameStateSpinStop';
 import { SpinController } from './SpinController';
 import { slotGameConfig } from './slotGameConfig';
 import { SpinResult } from './types';
+import { GameStateShowWin } from './game_states/GameStateShowWin';
 
 export class Game extends Application {
 	readonly world: World = null;
@@ -23,6 +24,7 @@ export class Game extends Application {
 		[GameStateE.SPIN_START]: GameStateSpinStart,
 		[GameStateE.SPINNING]: GameStateSpinning,
 		[GameStateE.SPIN_STOP]: GameStateSpinStop,
+		[GameStateE.SHOW_WIN]: GameStateShowWin,
 	});
 
 	readonly config = slotGameConfig;

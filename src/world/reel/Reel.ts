@@ -75,10 +75,13 @@ export class Reel extends Container {
 
 		const totalVisibleSymbols = config.visible_symbols + 2;
 
+		const pivotY =
+			(config.symbol_height * (config.visible_symbols + 1)) / 2;
+
 		for (let i = 0; i < totalVisibleSymbols; i++) {
 			const symbol = new Symbol();
 
-			symbol.y = config.symbol_height * i - config.symbol_height * 2;
+			symbol.y = config.symbol_height * i - pivotY;
 
 			symbolsContainer.addChild(symbol);
 
@@ -88,7 +91,8 @@ export class Reel extends Container {
 		for (let i = 0; i < config.visible_symbols; i++) {
 			const winFrame = new WinFrame();
 
-			winFrame.y = config.symbol_height * i - config.symbol_height;
+			winFrame.y =
+				config.symbol_height * i - pivotY + config.symbol_height;
 
 			winFrames.push(winFrame);
 

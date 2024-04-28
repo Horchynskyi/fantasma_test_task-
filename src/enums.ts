@@ -3,6 +3,7 @@ export enum GameStateE {
 	SPIN_START,
 	SPINNING,
 	SPIN_STOP,
+	SHOW_WIN,
 }
 
 export enum ReelStateE {

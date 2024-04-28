@@ -39,10 +39,13 @@ export class ReelStateSpinStop extends ReelState {
 
 		parent.symbolsContainer.y = 0;
 
+		const pivotY =
+			(config.symbol_height * (config.visible_symbols + 1)) / 2;
+
 		for (let i = 0; i < parent.symbols.length; i++) {
 			const symbol = parent.symbols[i];
 
-			symbol.y = config.symbol_height * i - config.symbol_height * 2;
+			symbol.y = config.symbol_height * i - pivotY;
 		}
 
 		parent.setCurrentSymbolIndex(stopSymbolIndex);
